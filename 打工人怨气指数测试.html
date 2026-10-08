@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>打工人怨气指数 | 测测你的怨气浓度</title>
+<meta name="description" content="12道题，30秒测出你的打工人怨气指数。佛系打工人还是黑化预备役？一测便知！">
+<meta property="og:title" content="打工人怨气指数 | 测测你的怨气浓度">
+<meta property="og:description" content="12道题，30秒测出你的打工人怨气指数。佛系打工人还是黑化预备役？一测便知！">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="打工人怨气指数 | 测测你的怨气浓度">
+<meta name="twitter:description" content="12道题，30秒测出你的打工人怨气指数。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23FF8C69'/%3E%3Ccircle cx='35' cy='38' r='6' fill='%23fff'/%3E%3Ccircle cx='65' cy='38' r='6' fill='%23fff'/%3E%3Cpath d='M28 62 Q50 78 72 62' stroke='%23fff' stroke-width='5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23FF8C69'/%3E%3Ccircle cx='35' cy='38' r='6' fill='%23fff'/%3E%3Ccircle cx='65' cy='38' r='6' fill='%23fff'/%3E%3Cpath d='M28 62 Q50 78 72 62' stroke='%23fff' stroke-width='5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap">
+<style>
+/* ===== 全局重置与变量 ===== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --primary: #FF8C69;
+  --primary-light: #FFB088;
+  --primary-bg: #FFF0EB;
+  --accent: #FFD93D;
+  --accent-light: #FFEAA7;
+  --mint: #6BCB77;
+  --mint-light: #A8E6CF;
+  --danger: #FF6B6B;
+  --danger-light: #FF8E8E;
+  --gold: #FFD700;
+  --bg: #FFF8F0;
+  --card: #FFFFFF;
+  --text: #4A4A4A;
+  --text-light: #999999;
+  --text-lighter: #CCCCCC;
+  --radius: 16px;
+  --radius-lg: 24px;
+  --radius-sm: 12px;
+  --shadow: 0 4px 20px rgba(255, 140, 105, 0.15);
+  --shadow-hover: 0 8px 30px rgba(255, 140, 105, 0.25);
+  --font-title: 'ZCOOL KuaiLe', 'Noto Sans SC', cursive;
+  --font-body: 'Noto Sans SC', -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+html { font-size: 16px; -webkit-tap-highlight-color: transparent; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+/* 漂浮装饰 */
+.floating-emoji {
+  position: fixed; pointer-events: none; opacity: 0.08;
+  font-size: 2rem; z-index: 0; animation: float 8s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+/* ===== 通用组件 ===== */
+.container { max-width: 480px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; }
+.view { display: none; min-height: 100vh; padding: 20px 0 40px; }
+.view.active { display: block; animation: fadeIn 0.4s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideInRight { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes slideInLeft { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes bounceIn { 0% { transform: scale(0.8); opacity: 0; } 60% { transform: scale(1.05); } 100% { transform: scale(1); opacity: 1; } }
+@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+@keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+@keyframes sparkle { 0%, 100% { opacity: 0.3; transform: scale(0.8); } 50% { opacity: 1; transform: scale(1.2); } }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 14px 32px; border: none; border-radius: var(--radius-lg);
+  font-family: var(--font-body); font-size: 1rem; font-weight: 700;
+  cursor: pointer; transition: all 0.25s ease; text-decoration: none;
+  min-height: 52px; width: 100%;
+}
+.btn-primary { background: var(--primary); color: #fff; box-shadow: var(--shadow); }
+.btn-primary:hover { background: #FF7A55; transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+.btn-primary:active { transform: translateY(0); }
+.btn-primary:disabled { background: var(--text-lighter); cursor: not-allowed; transform: none; box-shadow: none; }
+.btn-outline { background: var(--card); color: var(--primary); border: 2px solid var(--primary); }
+.btn-outline:hover { background: var(--primary-bg); }
+.btn-ghost { background: transparent; color: var(--text-light); }
+.btn-ghost:hover { color: var(--text); }
+.btn-group { display: flex; gap: 12px; margin-top: 24px; }
+.btn-group .btn { flex: 1; }
+
+.card {
+  background: var(--card); border-radius: var(--radius); padding: 24px;
+  box-shadow: var(--shadow); margin-bottom: 16px;
+}
+.tag {
+  display: inline-block; padding: 4px 14px; border-radius: 20px;
+  font-size: 0.8rem; font-weight: 500; margin: 4px 4px 4px 0;
+}
+.tag-primary { background: var(--primary-bg); color: var(--primary); }
+.tag-accent { background: var(--accent-light); color: #B8860B; }
+.tag-mint { background: var(--mint-light); color: #2E7D32; }
+.tag-danger { background: #FFE0E0; color: var(--danger); }
+
+/* ===== 首页 ===== */
+#home-view { flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+#home-view.active { display: flex; }
+.home-badge {
+  display: inline-block; padding: 6px 18px; border-radius: 20px;
+  background: var(--primary-bg); color: var(--primary);
+  font-size: 0.85rem; font-weight: 500; margin-bottom: 20px;
+  animation: bounceIn 0.6s ease;
+}
+.home-title {
+  font-family: var(--font-title); font-size: 2.6rem; color: var(--text);
+  margin-bottom: 8px; line-height: 1.2;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.home-subtitle { font-size: 1.05rem; color: var(--text-light); margin-bottom: 28px; }
+.home-illustration {
+  width: 200px; height: 200px; margin: 0 auto 24px;
+  background: linear-gradient(135deg, var(--primary-bg), var(--accent-light));
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 5rem; position: relative; overflow: hidden;
+}
+.home-illustration::before {
+  content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 60%);
+  animation: shimmer 3s linear infinite;
+}
+.home-intro {
+  background: var(--card); border-radius: var(--radius); padding: 20px;
+  box-shadow: var(--shadow); text-align: left; margin-bottom: 24px;
+  font-size: 0.95rem; line-height: 1.8; color: var(--text);
+}
+.home-intro p { margin-bottom: 8px; }
+.home-intro p:last-child { margin-bottom: 0; }
+.home-stats { display: flex; justify-content: center; gap: 24px; margin-bottom: 28px; }
+.home-stat { text-align: center; }
+.home-stat-num { font-family: var(--font-title); font-size: 1.5rem; color: var(--primary); }
+.home-stat-label { font-size: 0.8rem; color: var(--text-light); }
+.home-participants { font-size: 0.85rem; color: var(--text-light); margin-top: 20px; }
+.home-participants strong { color: var(--primary); }
+
+/* ===== 答题页 ===== */
+#quiz-view { padding-top: 0; }
+.quiz-header { position: sticky; top: 0; background: var(--bg); padding: 16px 0 12px; z-index: 10; }
+.progress-bar-wrap { width: 100%; height: 8px; background: #F0E6DD; border-radius: 4px; overflow: hidden; margin-bottom: 8px; }
+.progress-bar { height: 100%; border-radius: 4px; transition: width 0.4s ease, background 0.4s ease; background: var(--primary); }
+.quiz-meta { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: var(--text-light); }
+.quiz-question-card {
+  background: var(--card); border-radius: var(--radius); padding: 28px 24px;
+  box-shadow: var(--shadow); margin: 20px 0; animation: slideInRight 0.35s ease;
+}
+.quiz-question-num { font-family: var(--font-title); font-size: 1.1rem; color: var(--primary); margin-bottom: 12px; }
+.quiz-question-text { font-size: 1.15rem; font-weight: 700; line-height: 1.6; margin-bottom: 24px; }
+.quiz-options { display: flex; flex-direction: column; gap: 12px; }
+.quiz-option {
+  display: flex; align-items: flex-start; gap: 12px; padding: 16px;
+  border: 2px solid #F0E6DD; border-radius: var(--radius-sm);
+  cursor: pointer; transition: all 0.2s ease; background: var(--card);
+  text-align: left; font-family: var(--font-body); font-size: 0.95rem;
+  color: var(--text); width: 100%;
+}
+.quiz-option:hover { border-color: var(--primary-light); background: var(--primary-bg); }
+.quiz-option.selected { border-color: var(--primary); background: var(--primary-bg); }
+.quiz-option-radio {
+  width: 22px; height: 22px; border-radius: 50%; border: 2px solid #DDD;
+  flex-shrink: 0; margin-top: 2px; position: relative; transition: all 0.2s;
+}
+.quiz-option.selected .quiz-option-radio { border-color: var(--primary); }
+.quiz-option.selected .quiz-option-radio::after {
+  content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 12px; height: 12px; border-radius: 50%; background: var(--primary);
+}
+.quiz-option-text { flex: 1; line-height: 1.5; }
+.quiz-nav { display: flex; gap: 12px; margin-top: 8px; }
+.quiz-nav .btn { flex: 1; }
+
+/* ===== 结果页 ===== */
+#result-view { text-align: center; }
+.result-hero {
+  border-radius: var(--radius-lg); padding: 36px 24px; margin-bottom: 20px;
+  color: #fff; position: relative; overflow: hidden;
+}
+.result-hero::before {
+  content: ''; position: absolute; top: -30px; right: -30px; width: 120px; height: 120px;
+  background: rgba(255,255,255,0.15); border-radius: 50%;
+}
+.result-hero::after {
+  content: ''; position: absolute; bottom: -40px; left: -20px; width: 100px; height: 100px;
+  background: rgba(255,255,255,0.1); border-radius: 50%;
+}
+.result-stars { font-size: 1.8rem; margin-bottom: 12px; letter-spacing: 4px; }
+.result-name { font-family: var(--font-title); font-size: 2rem; margin-bottom: 8px; position: relative; z-index: 1; }
+.result-tags { position: relative; z-index: 1; }
+.result-tags .tag { background: rgba(255,255,255,0.25); color: #fff; }
+.result-radar-wrap { background: var(--card); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); margin-bottom: 16px; }
+.result-radar-wrap h3 { font-size: 1rem; margin-bottom: 12px; color: var(--text); }
+.result-section { background: var(--card); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); margin-bottom: 16px; text-align: left; }
+.result-section h3 { font-size: 1rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+.result-section p { font-size: 0.92rem; line-height: 1.8; color: var(--text); }
+.result-actions { margin-top: 24px; }
+.result-recommend { margin-top: 32px; text-align: left; }
+.result-recommend h3 { font-size: 1rem; margin-bottom: 12px; color: var(--text-light); }
+.recommend-card {
+  display: flex; align-items: center; gap: 12px; padding: 14px;
+  background: var(--card); border-radius: var(--radius-sm); box-shadow: var(--shadow);
+  margin-bottom: 10px; cursor: pointer; transition: transform 0.2s;
+}
+.recommend-card:hover { transform: translateX(4px); }
+.recommend-icon { width: 44px; height: 44px; border-radius: 10px; background: var(--primary-bg); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
+.recommend-info { flex: 1; }
+.recommend-title { font-size: 0.9rem; font-weight: 600; }
+.recommend-desc { font-size: 0.78rem; color: var(--text-light); }
+
+/* 彩蛋闪光效果 */
+.easter-egg .result-hero { animation: pulse 2s ease-in-out infinite; }
+.easter-egg .sparkle { position: absolute; font-size: 1.5rem; animation: sparkle 1.5s ease-in-out infinite; }
+
+/* ===== 管理页 ===== */
+#admin-view { text-align: left; }
+.admin-login { max-width: 360px; margin: 60px auto; text-align: center; }
+.admin-login h2 { font-family: var(--font-title); font-size: 1.6rem; margin-bottom: 20px; }
+.admin-login input {
+  width: 100%; padding: 14px 18px; border: 2px solid #F0E6DD; border-radius: var(--radius-sm);
+  font-size: 16px; font-family: var(--font-body); margin-bottom: 16px; outline: none;
+  transition: border-color 0.2s;
+}
+.admin-login input:focus { border-color: var(--primary); }
+.admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.admin-header h2 { font-family: var(--font-title); font-size: 1.4rem; }
+.admin-logout { background: none; border: none; color: var(--text-light); cursor: pointer; font-size: 0.9rem; font-family: var(--font-body); }
+.admin-tabs { display: flex; gap: 8px; margin-bottom: 20px; overflow-x: auto; padding-bottom: 4px; }
+.admin-tab {
+  padding: 8px 18px; border-radius: 20px; border: none; background: var(--card);
+  color: var(--text-light); cursor: pointer; font-family: var(--font-body); font-size: 0.88rem;
+  white-space: nowrap; transition: all 0.2s; box-shadow: var(--shadow);
+}
+.admin-tab.active { background: var(--primary); color: #fff; }
+.admin-panel { display: none; }
+.admin-panel.active { display: block; }
+.admin-stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
+.admin-stat-card { background: var(--card); border-radius: var(--radius-sm); padding: 16px; text-align: center; box-shadow: var(--shadow); }
+.admin-stat-num { font-family: var(--font-title); font-size: 1.6rem; color: var(--primary); }
+.admin-stat-label { font-size: 0.75rem; color: var(--text-light); margin-top: 4px; }
+.admin-chart { background: var(--card); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); margin-bottom: 16px; }
+.admin-chart h4 { font-size: 0.95rem; margin-bottom: 16px; }
+.admin-list-item {
+  display: flex; justify-content: space-between; align-items: center;
+  background: var(--card); border-radius: var(--radius-sm); padding: 14px 16px;
+  box-shadow: var(--shadow); margin-bottom: 10px;
+}
+.admin-list-item-text { flex: 1; font-size: 0.9rem; }
+.admin-list-item-actions { display: flex; gap: 8px; }
+.admin-btn-sm {
+  padding: 6px 14px; border-radius: 8px; border: none; cursor: pointer;
+  font-size: 0.8rem; font-family: var(--font-body); font-weight: 500;
+}
+.admin-btn-edit { background: var(--primary-bg); color: var(--primary); }
+.admin-btn-del { background: #FFE0E0; color: var(--danger); }
+.admin-add-btn { width: 100%; padding: 12px; border: 2px dashed var(--primary-light); border-radius: var(--radius-sm); background: transparent; color: var(--primary); cursor: pointer; font-family: var(--font-body); font-size: 0.9rem; margin-bottom: 16px; }
+.admin-form { background: var(--card); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); margin-bottom: 16px; }
+.admin-form label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px; color: var(--text); }
+.admin-form input, .admin-form textarea, .admin-form select {
+  width: 100%; padding: 10px 14px; border: 2px solid #F0E6DD; border-radius: 8px;
+  font-size: 16px; font-family: var(--font-body); margin-bottom: 14px; outline: none;
+  transition: border-color 0.2s;
+}
+.admin-form input:focus, .admin-form textarea:focus, .admin-form select:focus { border-color: var(--primary); }
+.admin-form textarea { resize: vertical; min-height: 60px; }
+.admin-option-row { display: flex; gap: 8px; margin-bottom: 8px; align-items: flex-start; }
+.admin-option-row input { flex: 1; margin-bottom: 0; }
+.admin-option-row select { width: 70px; margin-bottom: 0; }
+.admin-save-bar { position: sticky; bottom: 0; background: var(--bg); padding: 12px 0; display: flex; gap: 10px; }
+
+/* ===== 404 ===== */
+#notfound-view { flex-direction: column; align-items: center; justify-content: center; text-align: center; min-height: 100vh; }
+#notfound-view.active { display: flex; }
+#notfound-view .emoji { font-size: 5rem; margin-bottom: 20px; }
+#notfound-view h2 { font-family: var(--font-title); font-size: 1.6rem; margin-bottom: 12px; }
+#notfound-view p { color: var(--text-light); margin-bottom: 24px; }
+
+/* ===== Toast ===== */
+.toast {
+  position: fixed; top: 20px; left: 50%; transform: translateX(-50%) translateY(-100px);
+  background: var(--text); color: #fff; padding: 12px 24px; border-radius: var(--radius-sm);
+  font-size: 0.9rem; z-index: 9999; transition: transform 0.3s ease; opacity: 0;
+}
+.toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+/* ===== 响应式 ===== */
+@media (min-width: 768px) {
+  .container { max-width: 520px; }
+  .home-title { font-size: 3rem; }
+}
+@media (min-width: 1024px) {
+  .container { max-width: 560px; }
+}
+/* 减少动画偏好 */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+</style>
+</head>
+<body>
+<!-- 漂浮装饰 -->
+<div class="floating-emoji" style="top:5%;left:2%;animation-delay:0s;font-size:1.5rem;">☕</div>
+<div class="floating-emoji" style="top:12%;right:3%;animation-delay:2s;font-size:1.5rem;">💻</div>
+<div class="floating-emoji" style="top:55%;left:1%;animation-delay:4s;font-size:1.5rem;">😮‍💨</div>
+<div class="floating-emoji" style="top:70%;right:2%;animation-delay:1s;font-size:1.5rem;">📋</div>
+<div class="floating-emoji" style="top:35%;right:1%;animation-delay:3s;font-size:1.5rem;">⏰</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<!-- ===== 视图：首页 ===== -->
+<div class="view active" id="home-view">
+  <div class="container">
+    <div class="home-badge">🔥 职场心理测试</div>
+    <h1 class="home-title">打工人怨气指数</h1>
+    <p class="home-subtitle">测测你的怨气浓度有多高</p>
+    <div class="home-illustration">😤</div>
+    <div class="home-intro">
+      <p>周一早上的闹钟、永远改不完的方案、领导那句"辛苦了"……</p>
+      <p>你以为自己只是有点累？不，你可能已经在"怨气"的边缘反复横跳了。</p>
+      <p>12 道题，30 秒出结果，看看你是"佛系打工人"还是"黑化预备役"。</p>
+      <p style="color:var(--text-light);font-size:0.85rem;margin-top:8px;">⚠️ 本测试纯属娱乐，如有雷同，那一定是公司的问题。</p>
+    </div>
+    <div class="home-stats">
+      <div class="home-stat"><div class="home-stat-num">12</div><div class="home-stat-label">道题目</div></div>
+      <div class="home-stat"><div class="home-stat-num">30s</div><div class="home-stat-label">快速出结果</div></div>
+      <div class="home-stat"><div class="home-stat-num">6</div><div class="home-stat-label">种结果</div></div>
+    </div>
+    <button class="btn btn-primary" onclick="startQuiz()">🚀 开始测试</button>
+    <p class="home-participants">已有 <strong id="participant-count">128,432</strong> 人参与测试</p>
+  </div>
+</div>
+
+<!-- ===== 视图：答题页 ===== -->
+<div class="view" id="quiz-view">
+  <div class="container">
+    <div class="quiz-header">
+      <div class="progress-bar-wrap"><div class="progress-bar" id="progress-bar"></div></div>
+      <div class="quiz-meta">
+        <span id="quiz-progress-text">第 1 题 / 共 12 题</span>
+        <span id="quiz-dimension-hint"></span>
+      </div>
+    </div>
+    <div class="quiz-question-card" id="question-card">
+      <div class="quiz-question-num" id="question-num"></div>
+      <div class="quiz-question-text" id="question-text"></div>
+      <div class="quiz-options" id="options-container"></div>
+    </div>
+    <div class="quiz-nav">
+      <button class="btn btn-outline" id="prev-btn" onclick="prevQuestion()" style="display:none;">← 上一题</button>
+      <button class="btn btn-primary" id="next-btn" onclick="nextQuestion()" disabled>下一题 →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 视图：结果页 ===== -->
+<div class="view" id="result-view">
+  <div class="container" id="result-container"></div>
+</div>
+
+<!-- ===== 视图：管理页 ===== -->
+<div class="view" id="admin-view">
+  <div class="container">
+    <!-- 登录 -->
+    <div class="admin-login" id="admin-login">
+      <h2>🔧 管理后台</h2>
+      <p style="color:var(--text-light);margin-bottom:20px;font-size:0.9rem;">请输入管理密码</p>
+      <input type="password" id="admin-password" placeholder="管理密码" onkeydown="if(event.key==='Enter')adminLogin()">
+      <button class="btn btn-primary" onclick="adminLogin()">登录</button>
+    </div>
+    <!-- 管理面板 -->
+    <div id="admin-panel" style="display:none;">
+      <div class="admin-header">
+        <h2>🔧 管理后台</h2>
+        <button class="admin-logout" onclick="adminLogout()">退出登录</button>
+      </div>
+      <div class="admin-tabs">
+        <button class="admin-tab active" onclick="switchAdminTab('overview')">📊 数据概览</button>
+        <button class="admin-tab" onclick="switchAdminTab('questions')">📝 题目管理</button>
+        <button class="admin-tab" onclick="switchAdminTab('results')">🎯 结果管理</button>
+      </div>
+      <!-- 数据概览 -->
+      <div class="admin-panel active" id="tab-overview">
+        <div class="admin-stat-row">
+          <div class="admin-stat-card"><div class="admin-stat-num" id="stat-total">0</div><div class="admin-stat-label">总访问量</div></div>
+          <div class="admin-stat-card"><div class="admin-stat-num" id="stat-complete">0</div><div class="admin-stat-label">完成测试</div></div>
+          <div class="admin-stat-card"><div class="admin-stat-num" id="stat-rate">0%</div><div class="admin-stat-label">完成率</div></div>
+        </div>
+        <div class="admin-chart">
+          <h4>结果分布</h4>
+          <div id="result-distribution"></div>
+        </div>
+        <div class="admin-chart">
+          <h4>最近7天访问趋势</h4>
+          <div id="visit-trend"></div>
+        </div>
+      </div>
+      <!-- 题目管理 -->
+      <div class="admin-panel" id="tab-questions">
+        <button class="admin-add-btn" onclick="showQuestionForm()">+ 新增题目</button>
+        <div id="question-list"></div>
+        <div class="admin-form" id="question-form" style="display:none;">
+          <label>题目内容</label>
+          <textarea id="form-q-text"></textarea>
+          <label>主测维度</label>
+          <select id="form-q-dimension">
+            <option value="A">A - 工作负荷</option>
+            <option value="B">B - 人际消耗</option>
+            <option value="C">C - 回报失衡</option>
+            <option value="D">D - 自我透支</option>
+          </select>
+          <div id="form-options-container"></div>
+          <div class="admin-save-bar">
+            <button class="btn btn-outline" onclick="hideQuestionForm()">取消</button>
+            <button class="btn btn-primary" onclick="saveQuestion()">保存题目</button>
+          </div>
+        </div>
+      </div>
+      <!-- 结果管理 -->
+      <div class="admin-panel" id="tab-results">
+        <div id="result-list"></div>
+        <div class="admin-form" id="result-form" style="display:none;">
+          <label>结果名称</label>
+          <input type="text" id="form-r-name">
+          <label>星级 (1-5)</label>
+          <input type="number" id="form-r-stars" min="1" max="5">
+          <label>标签（逗号分隔）</label>
+          <input type="text" id="form-r-tags">
+          <label>主色调</label>
+          <input type="color" id="form-r-color" style="height:44px;padding:4px;">
+          <label>评语</label>
+          <textarea id="form-r-comment"></textarea>
+          <label>详细分析</label>
+          <textarea id="form-r-analysis"></textarea>
+          <label>总结建议</label>
+          <textarea id="form-r-summary"></textarea>
+          <label>分数区间（最小值）</label>
+          <input type="number" id="form-r-min">
+          <label>分数区间（最大值）</label>
+          <input type="number" id="form-r-max">
+          <div class="admin-save-bar">
+            <button class="btn btn-outline" onclick="hideResultForm()">取消</button>
+            <button class="btn btn-primary" onclick="saveResult()">保存结果</button>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:20px;">
+        <button class="btn btn-outline" onclick="exportConfig()">💾 导出配置 JSON</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 视图：404 ===== -->
+<div class="view" id="notfound-view">
+  <div class="container">
+    <div class="emoji">🫠</div>
+    <h2>页面走丢了</h2>
+    <p>大概是被领导叫去改方案了……</p>
+    <button class="btn btn-primary" onclick="navigateTo('home')">回到首页</button>
+  </div>
+</div>
+<script>
+// ===== 全局配置 =====
+const CONFIG = {
+  siteName: '打工人怨气指数',
+  participantCount: 128432,
+  adminPassword: 'admin123',
+  autoNext: true,
+  showRadar: true,
+  dimensions: {
+    A: { name: '工作负荷', icon: '📋' },
+    B: { name: '人际消耗', icon: '👥' },
+    C: { name: '回报失衡', icon: '💰' },
+    D: { name: '自我透支', icon: '🔋' }
+  }
+};
+
+// ===== 题目数据 =====
+let QUESTIONS = [
+  { id:1, dimension:'A', text:'周一早上闹钟响了，你的第一反应是？', options:[
+    { text:'新的一周，元气满满！', score:0, sub:null },
+    { text:'唉，又要上班了……', score:1, sub:null },
+    { text:'关掉闹钟，假装没听见，再躺五分钟', score:2, sub:null },
+    { text:'盯着天花板想：我为什么要过这种日子', score:3, sub:'D' }
+  ]},
+  { id:2, dimension:'B', text:'领导在群里@你说"这个方案再改改"，但没说哪里要改，你会？', options:[
+    { text:'主动沟通，确认修改方向', score:0, sub:null },
+    { text:'心里吐槽，但还是去问了', score:1, sub:null },
+    { text:'凭感觉瞎改一版交差', score:2, sub:null },
+    { text:'冷笑一声，开始更新简历', score:3, sub:'C' }
+  ]},
+  { id:3, dimension:'A', text:'周五下午 5:55，领导说"大家留一下开个短会"，你？', options:[
+    { text:'好的，正好有问题要讨论', score:0, sub:null },
+    { text:'默默取消晚上的约会', score:1, sub:null },
+    { text:'心里已经把领导骂了八百遍', score:2, sub:'B' },
+    { text:'直接收拾东西走人，假装没看见', score:3, sub:'B' }
+  ]},
+  { id:4, dimension:'C', text:'发工资日，你看到到账金额后的反应是？', options:[
+    { text:'还行，够花', score:0, sub:null },
+    { text:'就这？？？', score:1, sub:null },
+    { text:'看着数字叹气，然后默默打开花呗', score:2, sub:'D' },
+    { text:'冷笑：我的劳动就值这个价？', score:3, sub:null }
+  ]},
+  { id:5, dimension:'B', text:'同事把他的锅甩给你，领导还信了，你会？', options:[
+    { text:'当场澄清，拿出证据', score:0, sub:null },
+    { text:'事后找领导解释', score:1, sub:null },
+    { text:'忍了，心里记下这笔账', score:2, sub:'D' },
+    { text:'当着全组的面阴阳怪气回去', score:3, sub:null }
+  ]},
+  { id:6, dimension:'D', text:'你最近一次完整休息（不看工作消息）是什么时候？', options:[
+    { text:'上周刚休过假', score:0, sub:null },
+    { text:'周末勉强算休息吧', score:1, sub:null },
+    { text:'记不清了，好像很久没有', score:2, sub:'A' },
+    { text:'休息是什么？能吃吗？', score:3, sub:'A' }
+  ]},
+  { id:7, dimension:'C', text:'公司年会抽奖，你抽到了"谢谢参与"，而平时摸鱼的同事中了大奖，你？', options:[
+    { text:'哈哈，运气不好而已', score:0, sub:null },
+    { text:'有点不爽，但也没办法', score:1, sub:null },
+    { text:'这公司的运气分配和工作量一样离谱', score:2, sub:'B' },
+    { text:'当场决定明年不参加了', score:3, sub:null }
+  ]},
+  { id:8, dimension:'A', text:'你的工作群消息，平均每天多少条？', options:[
+    { text:'20 条以内，基本都是正事', score:0, sub:null },
+    { text:'50 条左右，偶尔有废话', score:1, sub:null },
+    { text:'100+，90% 是"收到"和表情包', score:2, sub:'B' },
+    { text:'已设置免打扰，但还是会焦虑地去看', score:3, sub:'D' }
+  ]},
+  { id:9, dimension:'D', text:'如果用一种动物形容现在的工作状态，你选？', options:[
+    { text:'快乐修勾，干劲十足', score:0, sub:null },
+    { text:'佛系猫咪，能摸就摸', score:1, sub:null },
+    { text:'疲惫牛马，眼神空洞', score:2, sub:'A' },
+    { text:'炸毛刺猬，见谁怼谁', score:3, sub:'B' }
+  ]},
+  { id:10, dimension:'B', text:'客户/需求方说"这个很简单，今天就能改完吧"，你内心 OS 是？', options:[
+    { text:'确实简单，没问题', score:0, sub:null },
+    { text:'简单你自己来啊', score:1, sub:null },
+    { text:'行吧，又要加班了', score:2, sub:'A' },
+    { text:'微笑着说"好的"，手上已经在写辞职信', score:3, sub:'C' }
+  ]},
+  { id:11, dimension:'C', text:'你觉得自己的付出和回报成正比吗？', options:[
+    { text:'成正比，多劳多得', score:0, sub:null },
+    { text:'基本成正比，偶尔吃亏', score:1, sub:null },
+    { text:'不成正比，干得多拿得少', score:2, sub:'D' },
+    { text:'正比？我付出的是青春，回报的是皱纹', score:3, sub:'D' }
+  ]},
+  { id:12, dimension:'D', text:'如果明天中了 500 万，你第一件事是？', options:[
+    { text:'继续上班，钱生钱', score:0, sub:null },
+    { text:'先请个长假再说', score:1, sub:null },
+    { text:'立刻辞职，环游世界', score:2, sub:'C' },
+    { text:'先去公司把辞职信甩领导脸上，再走', score:3, sub:'B' }
+  ]}
+];
+
+// ===== 结果数据 =====
+let RESULTS = [
+  { id:'zen', name:'佛系打工人', stars:1, tags:['#职场仙人','#情绪稳定','#你们卷你们的'],
+    color:'#6BCB77', gradient:['#6BCB77','#A8E6CF'], range:[0,8],
+    comment:'你是职场中的稀有物种，怨气值几乎为零。要么你真的热爱这份工作，要么你已经看透了一切。',
+    analysis:'四个维度得分均极低，说明你在工作负荷、人际关系、回报感知和自我状态上都处于健康区间。你可能擅长边界管理，或者当前工作确实让你满意。',
+    summary:'保持这份难得的平静，但小心被同事当成"情绪垃圾桶"。' },
+  { id:'emo', name:'间歇性 Emo', stars:2, tags:['#周一综合征','#下班就好','#打工人常态'],
+    color:'#FFD93D', gradient:['#FFD93D','#FFEAA7'], range:[9,15],
+    comment:'你的怨气像潮汐，周一涨潮，周五退潮。大部分时间能忍，但偶尔会在深夜破防。',
+    analysis:'工作负荷和自我透支维度略有抬头，但人际和回报维度尚在可控范围。你属于"正常打工人"区间，怨气来自日常琐碎而非深层矛盾。',
+    summary:'建议培养一个下班后的"情绪出口"，运动、追剧、撸猫都行，别把怨气憋成内伤。' },
+  { id:'normal', name:'标准社畜', stars:3, tags:['#社畜本畜','#嘴上辞职身体诚实','#我没事'],
+    color:'#FF8C69', gradient:['#FF8C69','#FFB088'], range:[16,22],
+    comment:'恭喜你，达到了打工人的平均怨气水平。你对工作有不满，但还在"能忍"的范围内。',
+    analysis:'四个维度均有中等程度得分，没有明显短板也没有明显优势。你清楚自己的处境，但暂时没有改变的动力或条件。',
+    summary:'这是最危险的区间——温水煮青蛙。建议认真评估：是调整心态，还是寻找出路？' },
+  { id:'angry', name:'怨气冲天', stars:4, tags:['#行走的火药桶','#别惹我','#已黑化30%'],
+    color:'#FF6B6B', gradient:['#FF6B6B','#FF8E8E'], range:[23,28],
+    comment:'你的怨气已经快溢出屏幕了。同事们可能已经察觉到你低气压，领导可能也在躲着你。',
+    analysis:'至少两个维度得分偏高，通常是"人际消耗"和"回报失衡"叠加。你对工作的负面情绪已经影响到日常生活和情绪状态。',
+    summary:'认真考虑一下：是换个环境，还是换个心态？长期处于这个区间，身心都会出问题。' },
+  { id:'dark', name:'黑化预备役', stars:5, tags:['#已黑化','#离职倒计时','#别和我谈理想'],
+    color:'#E84545', gradient:['#E84545','#FF6B6B'], range:[29,33],
+    comment:'你的怨气浓度已经爆表，每一根头发丝都在写着"我不干了"。你可能正在偷偷刷招聘软件，或者已经在写辞职信了。',
+    analysis:'四个维度全面高分，说明当前工作环境对你造成了系统性消耗。这不是"心态不好"，而是环境确实有问题。',
+    summary:'建议优先关注身心健康。如果暂时无法离职，至少设定一个"止损时间线"，别让工作吞噬全部生活。' },
+  { id:'easter', name:'已飞升 · 前打工人', stars:5, tags:['#上岸了','#勿cue','#已加入退休大军'],
+    color:'#FFD700', gradient:['#FFD700','#FFA500'], range:[36,36], isEaster:true,
+    comment:'系统检测到你怨气值已突破上限，自动判定为"已离职/已飞升"状态。恭喜脱离苦海！',
+    analysis:'触发彩蛋条件，说明你对打工这件事已经彻底看透，怨气转化为了行动力。你的答题模式显示出强烈的"去意已决"信号。',
+    summary:'愿你在没有闹钟的日子里，睡到自然醒。' }
+];
+
+// ===== 全局状态 =====
+let state = {
+  currentQuestion: 0,
+  answers: [],
+  result: null
+};
+
+// ===== 工具函数 =====
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2000);
+}
+function navigateTo(view) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  const el = document.getElementById(view + '-view');
+  if (el) { el.classList.add('active'); window.scrollTo(0,0); }
+  else { document.getElementById('notfound-view').classList.add('active'); }
+  if (location.hash !== '#' + view) {
+    history.replaceState(null, '', '#' + view);
+  }
+}
+function getOptionIndex(qid) {
+  const a = state.answers.find(x => x.questionId === qid);
+  return a ? a.optionIndex : -1;
+}
+
+// ===== 首页逻辑 =====
+function animateCount() {
+  const el = document.getElementById('participant-count');
+  const target = CONFIG.participantCount;
+  let cur = 0; const step = Math.ceil(target / 60);
+  const timer = setInterval(() => {
+    cur += step; if (cur >= target) { cur = target; clearInterval(timer); }
+    el.textContent = cur.toLocaleString();
+  }, 25);
+}
+
+// ===== 答题逻辑 =====
+function startQuiz() {
+  state.currentQuestion = 0; state.answers = []; state.result = null;
+  navigateTo('quiz'); renderQuestion();
+}
+function renderQuestion() {
+  const q = QUESTIONS[state.currentQuestion];
+  const idx = state.currentQuestion;
+  const total = QUESTIONS.length;
+  // 进度条
+  const pct = ((idx) / total) * 100;
+  const bar = document.getElementById('progress-bar');
+  bar.style.width = pct + '%';
+  // 根据已答题平均分变色
+  const avg = state.answers.length > 0
+    ? state.answers.reduce((s,a) => s + QUESTIONS.find(q=>q.id===a.questionId).options[a.optionIndex].score, 0) / state.answers.length
+    : 0;
+  bar.style.background = avg < 1 ? 'var(--mint)' : avg < 2 ? 'var(--primary)' : 'var(--danger)';
+  document.getElementById('quiz-progress-text').textContent = `第 ${idx+1} 题 / 共 ${total} 题`;
+  document.getElementById('quiz-dimension-hint').textContent = CONFIG.dimensions[q.dimension].icon + ' ' + CONFIG.dimensions[q.dimension].name;
+  // 题目
+  const card = document.getElementById('question-card');
+  card.style.animation = 'none'; card.offsetHeight; card.style.animation = 'slideInRight 0.35s ease';
+  document.getElementById('question-num').textContent = `Q${q.id}`;
+  document.getElementById('question-text').textContent = q.text;
+  // 选项随机打乱（每次渲染重新打乱，避免A到D怨气递增的明显规律）
+  const shuffled = q.options.map((opt, i) => ({ ...opt, originalIndex: i }))
+    .sort(() => Math.random() - 0.5);
+  state.shuffledOptions = shuffled;
+  // 选项
+  const container = document.getElementById('options-container');
+  container.innerHTML = '';
+  const selectedOriginalIdx = getOptionIndex(q.id);
+  shuffled.forEach((opt, displayIdx) => {
+    const isSelected = opt.originalIndex === selectedOriginalIdx;
+    const div = document.createElement('button');
+    div.className = 'quiz-option' + (isSelected ? ' selected' : '');
+    div.innerHTML = `<span class="quiz-option-radio"></span><span class="quiz-option-text">${String.fromCharCode(65+displayIdx)}. ${opt.text}</span>`;
+    div.onclick = () => selectOption(displayIdx);
+    container.appendChild(div);
+  });
+  // 导航按钮
+  document.getElementById('prev-btn').style.display = idx === 0 ? 'none' : 'inline-flex';
+  const nextBtn = document.getElementById('next-btn');
+  nextBtn.textContent = idx === total - 1 ? '查看结果 🎯' : '下一题 →';
+  nextBtn.disabled = selectedOriginalIdx === -1;
+}
+function selectOption(displayIdx) {
+  const q = QUESTIONS[state.currentQuestion];
+  const opt = state.shuffledOptions[displayIdx];
+  const originalIndex = opt.originalIndex;
+  const existing = state.answers.findIndex(a => a.questionId === q.id);
+  if (existing >= 0) state.answers[existing].optionIndex = originalIndex;
+  else state.answers.push({ questionId: q.id, optionIndex: originalIndex });
+  // 更新UI
+  document.querySelectorAll('.quiz-option').forEach((el, idx) => {
+    el.classList.toggle('selected', idx === displayIdx);
+  });
+  document.getElementById('next-btn').disabled = false;
+  // 自动下一题
+  if (CONFIG.autoNext && state.currentQuestion < QUESTIONS.length - 1) {
+    setTimeout(() => nextQuestion(), 400);
+  }
+}
+function nextQuestion() {
+  if (getOptionIndex(QUESTIONS[state.currentQuestion].id) === -1) { showToast('请先选择一个选项'); return; }
+  if (state.currentQuestion < QUESTIONS.length - 1) {
+    state.currentQuestion++; renderQuestion();
+  } else {
+    calculateAndShowResult();
+  }
+}
+function prevQuestion() {
+  if (state.currentQuestion > 0) { state.currentQuestion--; renderQuestion(); }
+}
+
+// ===== 计分与结果 =====
+function calculateScore() {
+  let dims = { A:0, B:0, C:0, D:0 };
+  let total = 0;
+  state.answers.forEach(a => {
+    const q = QUESTIONS.find(x => x.id === a.questionId);
+    const opt = q.options[a.optionIndex];
+    dims[q.dimension] += opt.score;
+    total += opt.score;
+    if (opt.score >= 2 && opt.sub) dims[opt.sub] += 1;
+  });
+  // 维度上调判定
+  let upgraded = false;
+  const dimVals = Object.values(dims);
+  if (dimVals.some(v => v >= 8) || dimVals.filter(v => v >= 7).length >= 2) upgraded = true;
+  // 彩蛋判定
+  const getOpt = (qid) => { const a = state.answers.find(x => x.questionId === qid); return a ? a.optionIndex : -1; };
+  let easterEgg = false;
+  if (total === 36) easterEgg = true;
+  if (getOpt(12) === 3 && getOpt(2) === 3 && getOpt(10) === 3) easterEgg = true;
+  if (getOpt(1) === 3 && getOpt(6) === 3 && getOpt(9) === 3) easterEgg = true;
+  return { total, dims, upgraded, easterEgg };
+}
+function matchResult(score) {
+  if (score.easterEgg) return RESULTS.find(r => r.isEaster);
+  let total = score.total;
+  // 上调一级
+  if (score.upgraded) {
+    const r = RESULTS.find(r => !r.isEaster && total >= r.range[0] && total <= r.range[1]);
+    if (r) {
+      const idx = RESULTS.indexOf(r);
+      if (idx < RESULTS.length - 2 && !RESULTS[idx+1].isEaster) return RESULTS[idx+1];
+    }
+  }
+  // 兜底
+  let matched = RESULTS.find(r => !r.isEaster && total >= r.range[0] && total <= r.range[1]);
+  if (!matched) matched = RESULTS.find(r => r.id === 'normal');
+  return matched;
+}
+function calculateAndShowResult() {
+  const score = calculateScore();
+  const result = matchResult(score);
+  state.result = { ...result, scoreData: score };
+  renderResult();
+  navigateTo('result');
+  // 记录完成数
+  try {
+    let stats = JSON.parse(localStorage.getItem('grievance_stats') || '{}');
+    stats.completed = (stats.completed || 0) + 1;
+    stats.results = stats.results || {};
+    stats.results[result.id] = (stats.results[result.id] || 0) + 1;
+    localStorage.setItem('grievance_stats', JSON.stringify(stats));
+  } catch(e) {}
+}
+function renderResult() {
+  const r = state.result;
+  const score = r.scoreData;
+  const container = document.getElementById('result-container');
+  const stars = '★'.repeat(r.stars) + '☆'.repeat(5 - r.stars);
+  const tagsHtml = r.tags.map(t => `<span class="tag">${t}</span>`).join('');
+  // 雷达图SVG
+  const radarSvg = CONFIG.showRadar ? generateRadarSvg(score.dims) : '';
+  // 彩蛋闪光
+  const sparkles = r.isEaster ? `
+    <span class="sparkle" style="top:10%;left:15%;">✨</span>
+    <span class="sparkle" style="top:20%;right:20%;animation-delay:0.5s;">⭐</span>
+    <span class="sparkle" style="bottom:15%;left:25%;animation-delay:1s;">✨</span>
+    <span class="sparkle" style="bottom:25%;right:15%;animation-delay:0.3s;">🌟</span>
+  ` : '';
+  container.innerHTML = `
+    <div class="result-hero ${r.isEaster ? '' : ''}" style="background:linear-gradient(135deg, ${r.gradient[0]}, ${r.gradient[1]});">
+      ${sparkles}
+      <div class="result-stars">${stars}</div>
+      <div class="result-name">${r.name}</div>
+      <div class="result-tags">${tagsHtml}</div>
+      ${score.upgraded && !r.isEaster ? '<div style="margin-top:10px;font-size:0.8rem;opacity:0.9;">⚡ 维度极值触发结果上调</div>' : ''}
+    </div>
+    ${radarSvg ? `<div class="result-radar-wrap"><h3>📊 四维度分析</h3>${radarSvg}</div>` : ''}
+    <div class="result-section"><h3>📝 评语</h3><p>${r.comment}</p></div>
+    <div class="result-section"><h3>🔍 详细分析</h3><p>${r.analysis}</p></div>
+    <div class="result-section"><h3>💡 总结建议</h3><p>${r.summary}</p></div>
+    <div class="result-actions">
+      <div class="btn-group">
+        <button class="btn btn-primary" onclick="generatePoster()">📸 保存结果图</button>
+        <button class="btn btn-outline" onclick="shareResult()">📤 分享</button>
+      </div>
+      <button class="btn btn-ghost" style="margin-top:12px;" onclick="restartQuiz()">🔄 再测一次</button>
+    </div>
+    <div class="result-recommend">
+      <h3>👇 你可能还喜欢</h3>
+      <div class="recommend-card" onclick="showToast('更多测试敬请期待~')">
+        <div class="recommend-icon">🧠</div>
+        <div class="recommend-info"><div class="recommend-title">职场倦怠指数测试</div><div class="recommend-desc">测测你离 burnout 还有多远</div></div>
+      </div>
+      <div class="recommend-card" onclick="showToast('更多测试敬请期待~')">
+        <div class="recommend-icon">😴</div>
+        <div class="recommend-info"><div class="recommend-title">睡眠质量测试</div><div class="recommend-desc">打工人的睡眠还好吗？</div></div>
+      </div>
+    </div>
+  `;
+  if (r.isEaster) document.getElementById('result-view').classList.add('easter-egg');
+  else document.getElementById('result-view').classList.remove('easter-egg');
+}
+function generateRadarSvg(dims) {
+  const size = 360, cx = size/2, cy = size/2, maxR = 68, labelOffset = 44;
+  const labels = [
+    { key:'A', name:'工作负荷', angle:-90 },
+    { key:'B', name:'人际消耗', angle:0 },
+    { key:'C', name:'回报失衡', angle:90 },
+    { key:'D', name:'自我透支', angle:180 }
+  ];
+  const pts = labels.map(l => {
+    const val = Math.min(dims[l.key] / 9, 1);
+    const r = maxR * val;
+    const rad = l.angle * Math.PI / 180;
+    return { x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad), label: l };
+  });
+  const polygon = pts.map(p => `${p.x},${p.y}`).join(' ');
+  // 网格
+  let grids = '';
+  for (let g = 1; g <= 4; g++) {
+    const gr = maxR * g / 4;
+    const gp = labels.map(l => {
+      const rad = l.angle * Math.PI / 180;
+      return `${cx + gr * Math.cos(rad)},${cy + gr * Math.sin(rad)}`;
+    }).join(' ');
+    grids += `<polygon points="${gp}" fill="none" stroke="#EEE" stroke-width="1"/>`;
+  }
+  // 轴线
+  let axes = '';
+  labels.forEach(l => {
+    const rad = l.angle * Math.PI / 180;
+    axes += `<line x1="${cx}" y1="${cy}" x2="${cx + maxR * Math.cos(rad)}" y2="${cy + maxR * Math.sin(rad)}" stroke="#EEE" stroke-width="1"/>`;
+  });
+  // 标签
+  let labelHtml = '';
+  labels.forEach(l => {
+    const rad = l.angle * Math.PI / 180;
+    const lx = cx + (maxR + labelOffset) * Math.cos(rad);
+    const ly = cy + (maxR + labelOffset) * Math.sin(rad);
+    const anchor = l.angle === 0 ? 'start' : l.angle === 180 ? 'end' : 'middle';
+    labelHtml += `<text x="${lx}" y="${ly}" text-anchor="${anchor}" dominant-baseline="middle" font-size="14" fill="#666">${l.name}</text>`;
+  });
+  // 数据点
+  let dots = pts.map(p => `<circle cx="${p.x}" cy="${p.y}" r="4" fill="#FF8C69"/>`).join('');
+  return `<svg viewBox="0 0 ${size} ${size}" width="100%" style="max-width:340px;display:block;margin:0 auto;">
+    ${grids}${axes}
+    <polygon points="${polygon}" fill="rgba(255,140,105,0.3)" stroke="#FF8C69" stroke-width="2"/>
+    ${dots}${labelHtml}
+  </svg>`;
+}
+function restartQuiz() { startQuiz(); }
+function shareResult() {
+  const r = state.result;
+  const text = `我在「打工人怨气指数」测试中得到了【${r.name}】，怨气指数${'★'.repeat(r.stars)}！你也来测测？${location.href}`;
+  // 优先用系统分享
+  if (navigator.share) {
+    navigator.share({ title: CONFIG.siteName, text, url: location.href }).catch(() => fallbackCopy(text));
+    return;
+  }
+  fallbackCopy(text);
+}
+function fallbackCopy(text) {
+  // 尝试 clipboard API
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(() => showToast('分享文案已复制！去粘贴吧~')).catch(() => legacyCopy(text));
+  } else {
+    legacyCopy(text);
+  }
+}
+function legacyCopy(text) {
+  // 降级：创建临时 textarea + execCommand
+  const ta = document.createElement('textarea');
+  ta.value = text; ta.style.position = 'fixed'; ta.style.left = '-9999px';
+  document.body.appendChild(ta); ta.select();
+  try {
+    document.execCommand('copy');
+    showToast('分享文案已复制！去粘贴吧~');
+  } catch(e) {
+    // 终极降级：弹窗显示文案让用户手动复制
+    showShareModal(text);
+  }
+  document.body.removeChild(ta);
+}
+function showShareModal(text) {
+  const modal = document.createElement('div');
+  modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;';
+  modal.innerHTML = `<div style="background:#fff;border-radius:16px;padding:24px;max-width:400px;width:100%;">
+    <h3 style="margin-bottom:12px;font-size:1.1rem;">复制分享文案</h3>
+    <textarea readonly style="width:100%;height:120px;padding:12px;border:2px solid #F0E6DD;border-radius:8px;font-size:0.9rem;resize:none;">${text}</textarea>
+    <div style="display:flex;gap:10px;margin-top:16px;">
+      <button onclick="this.closest('div[style]').parentElement.remove()" style="flex:1;padding:12px;border:none;border-radius:24px;background:#F0E6DD;cursor:pointer;font-size:0.9rem;">关闭</button>
+      <button onclick="const t=this.parentElement.previousElementSibling;t.select();document.execCommand('copy');this.textContent='已复制!'" style="flex:1;padding:12px;border:none;border-radius:24px;background:#FF8C69;color:#fff;cursor:pointer;font-size:0.9rem;">复制文案</button>
+    </div>
+  </div>`;
+  document.body.appendChild(modal);
+}
+function generatePoster() {
+  showToast('正在生成海报...');
+  const r = state.result;
+  const canvas = document.createElement('canvas');
+  canvas.width = 750; canvas.height = 1334;
+  const ctx = canvas.getContext('2d');
+  // 背景
+  const grad = ctx.createLinearGradient(0, 0, 750, 1334);
+  grad.addColorStop(0, r.gradient[0]); grad.addColorStop(1, r.gradient[1]);
+  ctx.fillStyle = grad; ctx.fillRect(0, 0, 750, 1334);
+  // 白色卡片
+  ctx.fillStyle = '#FFF8F0';
+  roundRect(ctx, 50, 200, 650, 850, 32); ctx.fill();
+  // 标题
+  ctx.fillStyle = '#4A4A4A'; ctx.font = 'bold 48px "Noto Sans SC", sans-serif';
+  ctx.textAlign = 'center'; ctx.fillText('打工人怨气指数', 375, 130);
+  // 结果名
+  ctx.fillStyle = r.color; ctx.font = 'bold 64px "Noto Sans SC", sans-serif';
+  ctx.fillText(r.name, 375, 320);
+  // 星级
+  ctx.fillStyle = '#FFD93D'; ctx.font = '48px sans-serif';
+  ctx.fillText('★'.repeat(r.stars) + '☆'.repeat(5-r.stars), 375, 400);
+  // 标签
+  ctx.fillStyle = '#999'; ctx.font = '28px "Noto Sans SC", sans-serif';
+  ctx.fillText(r.tags.join('  '), 375, 470);
+  // 评语
+  ctx.fillStyle = '#4A4A4A'; ctx.font = '30px "Noto Sans SC", sans-serif';
+  wrapText(ctx, r.comment, 375, 560, 560, 48);
+  // 底部
+  ctx.fillStyle = 'rgba(255,255,255,0.8)'; ctx.font = '24px "Noto Sans SC", sans-serif';
+  ctx.fillText('长按识别二维码测测你的怨气指数', 375, 1150);
+  ctx.fillStyle = '#FFF'; ctx.font = '20px "Noto Sans SC", sans-serif';
+  ctx.fillText(CONFIG.siteName, 375, 1260);
+  // 转图片并弹窗展示
+  const dataUrl = canvas.toDataURL('image/png');
+  showPosterModal(dataUrl);
+}
+function showPosterModal(dataUrl) {
+  const modal = document.createElement('div');
+  modal.id = 'poster-modal';
+  modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;';
+  modal.innerHTML = `
+    <p style="color:#fff;margin-bottom:12px;font-size:0.9rem;">手机长按图片保存，电脑点下方按钮下载</p>
+    <img src="${dataUrl}" style="max-width:100%;max-height:65vh;border-radius:12px;box-shadow:0 4px 30px rgba(0,0,0,0.3);" alt="结果海报">
+    <div style="display:flex;gap:12px;margin-top:20px;width:100%;max-width:320px;">
+      <button onclick="document.getElementById('poster-modal').remove()" style="flex:1;padding:14px;border:none;border-radius:24px;background:rgba(255,255,255,0.2);color:#fff;cursor:pointer;font-size:0.95rem;">关闭</button>
+      <button id="download-poster-btn" style="flex:1;padding:14px;border:none;border-radius:24px;background:#FF8C69;color:#fff;cursor:pointer;font-size:0.95rem;">下载海报</button>
+    </div>
+  `;
+  document.body.appendChild(modal);
+  // 绑定下载事件（用最可靠的方式）
+  document.getElementById('download-poster-btn').onclick = function() {
+    const a = document.createElement('a');
+    a.href = dataUrl;
+    a.download = '怨气指数结果.png';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    showToast('已保存到下载文件夹/相册！');
+  };
+  showToast('海报生成成功！');
+}
+function roundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x+r, y); ctx.lineTo(x+w-r, y); ctx.quadraticCurveTo(x+w, y, x+w, y+r);
+  ctx.lineTo(x+w, y+h-r); ctx.quadraticCurveTo(x+w, y+h, x+w-r, y+h);
+  ctx.lineTo(x+r, y+h); ctx.quadraticCurveTo(x, y+h, x, y+h-r);
+  ctx.lineTo(x, y+r); ctx.quadraticCurveTo(x, y, x+r, y); ctx.closePath();
+}
+function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
+  const chars = text.split(''); let line = ''; let cy = y;
+  for (let i = 0; i < chars.length; i++) {
+    const test = line + chars[i];
+    if (ctx.measureText(test).width > maxWidth && line) {
+      ctx.fillText(line, x, cy); line = chars[i]; cy += lineHeight;
+    } else { line = test; }
+  }
+  if (line) ctx.fillText(line, x, cy);
+}
+
+// ===== 管理页逻辑 =====
+let editingQuestionId = null;
+let editingResultId = null;
+function adminLogin() {
+  const pwd = document.getElementById('admin-password').value;
+  if (pwd === CONFIG.adminPassword) {
+    sessionStorage.setItem('admin_logged', '1');
+    document.getElementById('admin-login').style.display = 'none';
+    document.getElementById('admin-panel').style.display = 'block';
+    loadAdminData();
+  } else { showToast('密码错误'); }
+}
+function adminLogout() {
+  sessionStorage.removeItem('admin_logged');
+  document.getElementById('admin-login').style.display = 'block';
+  document.getElementById('admin-panel').style.display = 'none';
+  document.getElementById('admin-password').value = '';
+}
+function switchAdminTab(tab) {
+  document.querySelectorAll('.admin-tab').forEach((t,i) => t.classList.toggle('active', ['overview','questions','results'][i] === tab));
+  document.querySelectorAll('.admin-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  if (tab === 'overview') renderOverview();
+  if (tab === 'questions') renderQuestionList();
+  if (tab === 'results') renderResultList();
+}
+function loadAdminData() {
+  // 从localStorage加载自定义配置
+  try {
+    const saved = localStorage.getItem('grievance_config');
+    if (saved) {
+      const cfg = JSON.parse(saved);
+      if (cfg.questions) QUESTIONS = cfg.questions;
+      if (cfg.results) RESULTS = cfg.results;
+    }
+  } catch(e) {}
+  renderOverview(); renderQuestionList(); renderResultList();
+}
+function renderOverview() {
+  let stats = {};
+  try { stats = JSON.parse(localStorage.getItem('grievance_stats') || '{}'); } catch(e) {}
+  const total = stats.visits || Math.floor(Math.random() * 500) + 100;
+  const completed = stats.completed || 0;
+  document.getElementById('stat-total').textContent = total;
+  document.getElementById('stat-complete').textContent = completed;
+  document.getElementById('stat-rate').textContent = total > 0 ? Math.round(completed / total * 100) + '%' : '0%';
+  // 结果分布
+  const dist = stats.results || {};
+  const distHtml = RESULTS.filter(r=>!r.isEaster).map(r => {
+    const count = dist[r.id] || 0;
+    const pct = completed > 0 ? Math.round(count / completed * 100) : 0;
+    return `<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+      <span style="width:90px;font-size:0.85rem;flex-shrink:0;">${r.name}</span>
+      <div style="flex:1;height:20px;background:#F0E6DD;border-radius:10px;overflow:hidden;">
+        <div style="width:${pct}%;height:100%;background:${r.color};border-radius:10px;transition:width 0.5s;"></div>
+      </div>
+      <span style="width:40px;text-align:right;font-size:0.8rem;color:#999;">${pct}%</span>
+    </div>`;
+  }).join('');
+  document.getElementById('result-distribution').innerHTML = distHtml;
+  // 访问趋势（模拟）
+  const days = ['周一','周二','周三','周四','周五','周六','周日'];
+  const values = days.map(() => Math.floor(Math.random() * 80) + 20);
+  const maxV = Math.max(...values);
+  const trendHtml = `<div style="display:flex;align-items:flex-end;gap:8px;height:120px;padding-top:10px;">
+    ${days.map((d,i) => `<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+      <span style="font-size:0.7rem;color:#999;">${values[i]}</span>
+      <div style="width:100%;background:linear-gradient(to top, #FF8C69, #FFB088);border-radius:6px 6px 0 0;height:${(values[i]/maxV)*100}%;min-height:4px;"></div>
+      <span style="font-size:0.7rem;color:#999;">${d}</span>
+    </div>`).join('')}
+  </div>`;
+  document.getElementById('visit-trend').innerHTML = trendHtml;
+}
+function renderQuestionList() {
+  const html = QUESTIONS.map(q => `
+    <div class="admin-list-item">
+      <div class="admin-list-item-text">Q${q.id}. ${q.text.length > 30 ? q.text.slice(0,30)+'...' : q.text}</div>
+      <div class="admin-list-item-actions">
+        <button class="admin-btn-sm admin-btn-edit" onclick="editQuestion(${q.id})">编辑</button>
+        <button class="admin-btn-sm admin-btn-del" onclick="deleteQuestion(${q.id})">删除</button>
+      </div>
+    </div>
+  `).join('');
+  document.getElementById('question-list').innerHTML = html;
+}
+function showQuestionForm() {
+  editingQuestionId = null;
+  document.getElementById('form-q-text').value = '';
+  document.getElementById('form-q-dimension').value = 'A';
+  renderOptionInputs([{text:'',score:0,sub:''},{text:'',score:1,sub:''},{text:'',score:2,sub:''},{text:'',score:3,sub:''}]);
+  document.getElementById('question-form').style.display = 'block';
+  document.getElementById('question-form').scrollIntoView({behavior:'smooth'});
+}
+function editQuestion(id) {
+  const q = QUESTIONS.find(x => x.id === id);
+  if (!q) return;
+  editingQuestionId = id;
+  document.getElementById('form-q-text').value = q.text;
+  document.getElementById('form-q-dimension').value = q.dimension;
+  renderOptionInputs(q.options);
+  document.getElementById('question-form').style.display = 'block';
+  document.getElementById('question-form').scrollIntoView({behavior:'smooth'});
+}
+function renderOptionInputs(options) {
+  const container = document.getElementById('form-options-container');
+  container.innerHTML = options.map((opt, i) => `
+    <div class="admin-option-row">
+      <span style="padding-top:10px;font-weight:600;font-size:0.85rem;">${String.fromCharCode(65+i)}</span>
+      <input type="text" placeholder="选项内容" value="${opt.text.replace(/"/g,'&quot;')}" data-opt-text="${i}">
+      <select data-opt-score="${i}">
+        <option value="0" ${opt.score===0?'selected':''}>0分</option>
+        <option value="1" ${opt.score===1?'selected':''}>1分</option>
+        <option value="2" ${opt.score===2?'selected':''}>2分</option>
+        <option value="3" ${opt.score===3?'selected':''}>3分</option>
+      </select>
+      <select data-opt-sub="${i}">
+        <option value="">无副维</option>
+        <option value="A" ${opt.sub==='A'?'selected':''}>A</option>
+        <option value="B" ${opt.sub==='B'?'selected':''}>B</option>
+        <option value="C" ${opt.sub==='C'?'selected':''}>C</option>
+        <option value="D" ${opt.sub==='D'?'selected':''}>D</option>
+      </select>
+    </div>
+  `).join('');
+}
+function hideQuestionForm() { document.getElementById('question-form').style.display = 'none'; }
+function saveQuestion() {
+  const text = document.getElementById('form-q-text').value.trim();
+  if (!text) { showToast('请输入题目内容'); return; }
+  const dimension = document.getElementById('form-q-dimension').value;
+  const options = [];
+  for (let i = 0; i < 4; i++) {
+    const t = document.querySelector(`[data-opt-text="${i}"]`).value.trim();
+    if (!t) { showToast('请填写所有选项'); return; }
+    options.push({
+      text: t,
+      score: parseInt(document.querySelector(`[data-opt-score="${i}"]`).value),
+      sub: document.querySelector(`[data-opt-sub="${i}"]`).value || null
+    });
+  }
+  if (editingQuestionId) {
+    const idx = QUESTIONS.findIndex(q => q.id === editingQuestionId);
+    QUESTIONS[idx] = { id: editingQuestionId, dimension, text, options };
+  } else {
+    const newId = Math.max(...QUESTIONS.map(q => q.id)) + 1;
+    QUESTIONS.push({ id: newId, dimension, text, options });
+  }
+  saveConfig(); hideQuestionForm(); renderQuestionList(); showToast('保存成功');
+}
+function deleteQuestion(id) {
+  if (!confirm('确定删除这道题吗？')) return;
+  QUESTIONS = QUESTIONS.filter(q => q.id !== id);
+  saveConfig(); renderQuestionList(); showToast('已删除');
+}
+function renderResultList() {
+  const html = RESULTS.map(r => `
+    <div class="admin-list-item">
+      <div class="admin-list-item-text">
+        <span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:${r.color};margin-right:8px;vertical-align:middle;"></span>
+        ${r.name}（${r.range[0]}-${r.range[1]}分）${r.isEaster ? ' 🎁彩蛋' : ''}
+      </div>
+      <div class="admin-list-item-actions">
+        <button class="admin-btn-sm admin-btn-edit" onclick="editResult('${r.id}')">编辑</button>
+      </div>
+    </div>
+  `).join('');
+  document.getElementById('result-list').innerHTML = html;
+}
+function editResult(id) {
+  const r = RESULTS.find(x => x.id === id);
+  if (!r) return;
+  editingResultId = id;
+  document.getElementById('form-r-name').value = r.name;
+  document.getElementById('form-r-stars').value = r.stars;
+  document.getElementById('form-r-tags').value = r.tags.join(',');
+  document.getElementById('form-r-color').value = r.color;
+  document.getElementById('form-r-comment').value = r.comment;
+  document.getElementById('form-r-analysis').value = r.analysis;
+  document.getElementById('form-r-summary').value = r.summary;
+  document.getElementById('form-r-min').value = r.range[0];
+  document.getElementById('form-r-max').value = r.range[1];
+  document.getElementById('result-form').style.display = 'block';
+  document.getElementById('result-form').scrollIntoView({behavior:'smooth'});
+}
+function hideResultForm() { document.getElementById('result-form').style.display = 'none'; }
+function saveResult() {
+  const r = RESULTS.find(x => x.id === editingResultId);
+  if (!r) return;
+  r.name = document.getElementById('form-r-name').value.trim();
+  r.stars = parseInt(document.getElementById('form-r-stars').value);
+  r.tags = document.getElementById('form-r-tags').value.split(',').map(t=>t.trim()).filter(Boolean);
+  r.color = document.getElementById('form-r-color').value;
+  r.comment = document.getElementById('form-r-comment').value.trim();
+  r.analysis = document.getElementById('form-r-analysis').value.trim();
+  r.summary = document.getElementById('form-r-summary').value.trim();
+  r.range = [parseInt(document.getElementById('form-r-min').value), parseInt(document.getElementById('form-r-max').value)];
+  saveConfig(); hideResultForm(); renderResultList(); showToast('保存成功');
+}
+function saveConfig() {
+  try { localStorage.setItem('grievance_config', JSON.stringify({ questions: QUESTIONS, results: RESULTS })); } catch(e) {}
+}
+function exportConfig() {
+  const cfg = { questions: QUESTIONS, results: RESULTS, config: CONFIG };
+  const blob = new Blob([JSON.stringify(cfg, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'grievance-test-config.json'; a.click();
+  URL.revokeObjectURL(url);
+  showToast('配置已导出');
+}
+
+// ===== 路由初始化 =====
+function handleHash() {
+  const hash = location.hash.replace('#', '') || 'home';
+  const validViews = ['home', 'quiz', 'result', 'admin'];
+  if (validViews.includes(hash)) {
+    if (hash === 'admin') {
+      navigateTo('admin');
+      if (sessionStorage.getItem('admin_logged') === '1') {
+        document.getElementById('admin-login').style.display = 'none';
+        document.getElementById('admin-panel').style.display = 'block';
+        loadAdminData();
+      }
+    } else if (hash === 'result' && state.result) {
+      navigateTo('result');
+    } else if (hash === 'quiz') {
+      navigateTo('quiz');
+      if (state.answers.length === 0) { state.currentQuestion = 0; }
+      renderQuestion();
+    } else {
+      navigateTo('home');
+    }
+  } else {
+    navigateTo('notfound');
+  }
+}
+window.addEventListener('hashchange', handleHash);
+window.addEventListener('DOMContentLoaded', () => {
+  animateCount();
+  handleHash();
+  // 记录访问
+  try {
+    let stats = JSON.parse(localStorage.getItem('grievance_stats') || '{}');
+    stats.visits = (stats.visits || 0) + 1;
+    localStorage.setItem('grievance_stats', JSON.stringify(stats));
+  } catch(e) {}
+  // 键盘支持
+  document.addEventListener('keydown', (e) => {
+    if (!document.getElementById('quiz-view').classList.contains('active')) return;
+    if (e.key >= '1' && e.key <= '4') {
+      const idx = parseInt(e.key) - 1;
+      const opts = document.querySelectorAll('.quiz-option');
+      if (opts[idx]) opts[idx].click();
+    }
+    if (e.key === 'Enter' || e.key === 'ArrowRight') nextQuestion();
+    if (e.key === 'ArrowLeft') prevQuestion();
+  });
+});
+</script>
+</body>
+</html>
